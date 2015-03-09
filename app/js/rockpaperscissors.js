@@ -93,4 +93,34 @@ function playToFive() {
     return [playerWins, computerWins];
 }
 
-playToFive();
+
+function playTo(x) {
+    var playerWins = 0;
+    var computerWins = 0;
+    var playerMove;
+    var computerMove;
+    var winner;
+    if (x < 1) {
+        console.log("No game to play.");
+        return;
+    }
+    console.log("Let's play Rock, Paper, Scissors");
+    
+    while (playerWins < x && computerWins < x) {
+        playerMove = getPlayerMove(null);
+        computerMove = getComputerMove(null);
+        winner = getWinner(playerMove,computerMove) ;
+        if (winner === 'player') {
+            playerWins += 1;
+        } else if (winner === 'computer') {
+            computerWins += 1;
+        }
+        console.log("Player chose " + playerMove + " while Computer chose " + computerMove);
+        console.log("The score is currently " + playerWins + " to " + computerWins + "\n");
+    }
+    console.log("Winner is " + (playerWins>computerWins? 'Player':'Computer'));
+    return [playerWins, computerWins];
+}
+
+
+playTo(1);
